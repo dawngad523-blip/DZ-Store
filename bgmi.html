@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BGMI</title>
+
+<style>
+body{
+background:linear-gradient(135deg,#10192c,#4b1fb3);
+color:white;
+font-family:Arial,sans-serif;
+text-align:center;
+padding:30px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:#2f5fff;
+color:white;
+}
+.card {
+    background: #1d2c4d;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 300px;
+    border-radius: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🎮 BGMI</h1>
+
+<p>Welcome to BGMI Store.</p>
+
+<div class="card">
+<h2>60 UC</h2>
+<p>₹70</p>
+<button onclick="selectUC('60 UC', 70)">Buy</button>
+</div>
+
+<div class="card">
+<h2>325 UC</h2>
+<p>₹365</p>
+<button onclick="selectUC('325 UC', 365)">Buy</button>
+</div>
+
+<div class="card">
+<h2>660 UC</h2>
+<p>₹745</p>
+<button onclick="selectUC('660 UC', 745)">Buy</button>
+</div>
+<div class="card">
+    <h2>1800 UC</h2>
+    <p>₹1895</p>
+<button onclick="selectUC('1800 UC', 1895)">Buy</button>
+</div>
+<div class="card">
+    <h2>3850 UC</h2>
+    <p>₹3795</p>
+<button onclick="selectUC('3850 UC', 3795)">Buy</button>
+</div>
+<div class="card">
+    <h2>8100 UC</h2>
+    <p>₹7495</p>
+<button onclick="selectUC('8100 UC', 7495)">Buy</button>
+</div>
+
+<h2>Enter Your Player ID</h2>
+
+<input type="text" id="playerId" placeholder="Enter BGMI Player ID">
+
+<br><br>
+
+<button onclick="buyUC()">Continue</button>
+
+<script>
+function buyUC() {
+    let playerId = document.getElementById("playerId").value;
+
+    if (playerId === "") {
+        alert("Please enter your BGMI Player ID");
+    } else {
+        alert("Order received for Player ID: " + playerId);
+    }
+}
+let selectedUC = "";
+let selectedPrice = "";
+
+function selectUC(uc, price) {
+    selectedUC = uc;
+    selectedPrice = price;
+    alert("Selected: " + uc + " for ₹" + price);
+}
+
+function buyUC() {
+    let playerId = document.getElementById("playerId").value;
+
+    if (selectedUC === "") {
+        alert("Please select a UC package first");
+    } else if (playerId === "") {
+        alert("Please enter your BGMI Player ID");
+    } else {
+window.location.href =
+    "payment.html?uc=" + encodeURIComponent(selectedUC) +
+    "&price=" + selectedPrice +
+    "&id=" + encodeURIComponent(playerId);
+    }
+}
+</script>
+</body>
+</html>
