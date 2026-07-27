@@ -65,25 +65,30 @@ button{
 <script>
 const params = new URLSearchParams(window.location.search);
 
-document.getElementById("uc").innerHTML =
-"UC: " + params.get("uc");
+const uc = params.get("uc");
+const price = params.get("price");
+const playerId = params.get("id");
 
-document.getElementById("price").innerHTML =
-"Price: ₹" + params.get("price");
-
-document.getElementById("player").innerHTML =
-"Player ID: " + params.get("id");
+document.getElementById("uc").textContent = "UC Package: " + (uc || "Not found");
+document.getElementById("price").textContent = "Price: ₹" + (price || "Not found");
+document.getElementById("player").textContent = "Player ID: " + (playerId || "Not found");
 
 function payNow() {
-  const amount = params.get("price");
+    if (!price) {
+        alert("Payment amount not found.");
+        return;
+    }
 
-  const upi = "upi://pay?pa=dawngad523@oksbi"
-    + "&pn=DZ%20Store"
-    + "&am=" + encodeURIComponent(amount)
-    + "&cu=INR"
-    + "&tn=BGMI%20UC%20Topup";
+    const intentUrl =
+        "intent://pay?" +
+        "pa=dawngad523@oksbi" +
+        "&pn=DZ%20Store" +
+        "&am=" + encodeURIComponent(price) +
+        "&cu=INR" +
+        "&tn=BGMI%20UC%20Topup" +
+        "#Intent;scheme=upi;end";
 
-  window.location.href = upi;
+    window.location.href = intentUrl;
 }
 </script>
 

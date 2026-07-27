@@ -88,31 +88,35 @@ color:white;
 <button onclick="buyUC()">Continue</button>
 
 <script>
-
-}
 let selectedUC = "";
 let selectedPrice = "";
 
 function selectUC(uc, price) {
     selectedUC = uc;
     selectedPrice = price;
+
     alert("Selected: " + uc + " for ₹" + price);
 }
 
 function buyUC() {
-    let playerId = document.getElementById("playerId").value;
+    let playerId = document.getElementById("playerId").value.trim();
 
     if (selectedUC === "") {
         alert("Please select a UC package first");
-    } else if (playerId === "") {
-        alert("Please enter your BGMI Player ID");
-    } else {
-window.location.href =
-    "payment.html?uc=" + encodeURIComponent(selectedUC) +
-    "&price=" + selectedPrice +
-    "&id=" + encodeURIComponent(playerId);
+        return;
     }
+
+    if (playerId === "") {
+        alert("Please enter your BGMI Player ID");
+        return;
+    }
+
+    window.location.href =
+        "payment.html?uc=" + encodeURIComponent(selectedUC) +
+        "&price=" + encodeURIComponent(selectedPrice) +
+        "&id=" + encodeURIComponent(playerId);
 }
+
 </script>
 </body>
 </html>
