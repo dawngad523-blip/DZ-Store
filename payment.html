@@ -79,16 +79,23 @@ function payNow() {
         return;
     }
 
-    const intentUrl =
-        "intent://pay?" +
-        "pa=dawngad523@oksbi" +
-        "&pn=DZ%20Store" +
+    const upiUrl =
+        "upi://pay?pa=dawngad523@oksbi" +
+        "&pn=DZ Store" +
         "&am=" + encodeURIComponent(price) +
         "&cu=INR" +
-        "&tn=BGMI%20UC%20Topup" +
-        "#Intent;scheme=upi;end";
+        "&tn=BGMI UC Topup";
 
-    window.location.href = intentUrl;
+    // Open the UPI app
+    window.location.href = upiUrl;
+
+    // After 3 seconds, show the receipt page
+    setTimeout(function () {
+        window.location.href =
+            "success.html?uc=" + encodeURIComponent(uc) +
+            "&price=" + encodeURIComponent(price) +
+            "&id=" + encodeURIComponent(playerId);
+    }, 3000);
 }
 </script>
 
