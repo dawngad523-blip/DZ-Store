@@ -27,11 +27,20 @@ color:white;
     max-width: 300px;
     border-radius: 15px;
 }
+.banner{
+    width:95%;
+    max-width:900px;
+    display:block;
+    margin:20px auto;
+    border-radius:18px;
+}
 </style>
 
 </head>
 
 <body>
+  
+<img src="bgmi-banner.png" class="banner" alt="BGMI Banner">
 
 <h1>🎮 BGMI</h1>
 
@@ -79,14 +88,7 @@ color:white;
 <button onclick="buyUC()">Continue</button>
 
 <script>
-function buyUC() {
-    let playerId = document.getElementById("playerId").value;
 
-    if (playerId === "") {
-        alert("Please enter your BGMI Player ID");
-    } else {
-        alert("Order received for Player ID: " + playerId);
-    }
 }
 let selectedUC = "";
 let selectedPrice = "";

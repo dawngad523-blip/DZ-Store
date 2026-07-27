@@ -77,12 +77,13 @@ document.getElementById("player").innerHTML =
 function payNow() {
   const amount = params.get("price");
 
-const upi =
-"upi://pay?pa=dawngad523@oksbi&pn=DZ%20Store&am=" +
-amount +
-"&cu=INR";
+  const upi = "upi://pay?pa=dawngad523@oksbi"
+    + "&pn=DZ%20Store"
+    + "&am=" + encodeURIComponent(amount)
+    + "&cu=INR"
+    + "&tn=BGMI%20UC%20Topup";
 
-window.location.href = upi;
+  window.location.href = upi;
 }
 </script>
 
