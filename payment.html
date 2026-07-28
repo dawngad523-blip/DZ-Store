@@ -91,7 +91,7 @@ function payNow() {
 
     // After 3 seconds, show the receipt page
     setTimeout(function () {
-        window.location.href =
+    window.open(upiUrl, "_blank");
             "success.html?uc=" + encodeURIComponent(uc) +
             "&price=" + encodeURIComponent(price) +
             "&id=" + encodeURIComponent(playerId);
