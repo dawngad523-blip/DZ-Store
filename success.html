@@ -96,6 +96,19 @@ function copyOrder(){
     alert("Order ID copied!");
 }
 
+    emailjs.send("service_t1cbq9j", "template_tp3nhzh", {
+    order_id: orderId,
+    player_id: player,
+    uc_package: uc,
+    amount: price,
+    game: "BGMI",
+    order_date: new Date().toLocaleString()
+}).then(function() {
+    console.log("Email sent");
+}, function(error) {
+    console.log("Email failed", error);
+});
+    
 </script>
 
 </body>
